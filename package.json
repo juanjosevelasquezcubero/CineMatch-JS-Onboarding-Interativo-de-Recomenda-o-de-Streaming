@@ -1,0 +1,24 @@
+{
+  "name": "cinematch-js-onboarding-interativo-de-recomenda-o-de-streaming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cinematch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanjosevelasquezcubero/CineMatch-JS-Onboarding-Interativo-de-Recomenda-o-de-Streaming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/juanjosevelasquezcubero/CineMatch-JS-Onboarding-Interativo-de-Recomenda-o-de-Streaming/issues"
+  },
+  "homepage": "https://github.com/juanjosevelasquezcubero/CineMatch-JS-Onboarding-Interativo-de-Recomenda-o-de-Streaming#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
