@@ -140,3 +140,58 @@ function removerAcentos(texto) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 }
+//Compatabilidade entre o perfil do usuário e os itens do catálogo//
+function calcularCompatibilidadeItem(usuario, conteudo) {
+  const generosUsuario = usuario.generosFavoritos.map(g => removerAcentos(g.trim()));
+  const generosConteudo = conteudo.generos.map(g => removerAcentos(g.trim()));
+
+  const generosEmComum = generosConteudo.filter(g => generosUsuario.includes(g));
+  const generosNaoExplorados = generosConteudo.filter(g => !generosUsuario.includes(g));
+
+  const totalGeneros = generosConteudo.length || 1;
+  const percentual = Math.round((generosEmComum.length / totalGeneros) * 100);
+
+  let classificacao;
+  if (percentual >= 80) {
+    classificacao = 'Alta afinidade';
+  } else if (percentual >= 50) {
+    classificacao = 'Média afinidade';
+  } else {
+    classificacao = 'Baixa afinidade';
+  }
+
+  const generosEmComumOriginais = conteudo.generos.filter(g =>
+    generosUsuario.includes(removerAcentos(g))
+  );
+
+  const generosNaoExploradosOriginais = conteudo.generos.filter(g =>
+    !generosUsuario.includes(removerAcentos(g))
+  );
+
+  return {
+    conteudo,
+    percentual,
+    classificacao,
+    generosEmComum: generosEmComumOriginais,
+    generosNaoExplorados: generosNaoExploradosOriginais
+  };
+}
+
+function calcularCompatibilidades(usuario, catalogo) {
+  console.clear();
+  console.log('\n===== COMPATIBILIDADE COM O CATÁLOGO =====\n');
+
+  const resultados = catalogo.map(conteudo => calcularCompatibilidadeItem(usuario, conteudo));
+
+  resultados.forEach(resultado => {
+    const { conteudo, percentual, classificacao, generosEmComum, generosNaoExplorados } = resultado;
+
+    console.log(`Título: ${conteudo.titulo}`);
+    console.log(`Tipo: ${conteudo.tipo}`);
+    console.log(`Compatibilidade: ${percentual}%`);
+    console.log(`Gêneros em comum: ${generosEmComum.length > 0 ? generosEmComum.join(', ') : 'Nenhum'}`);
+    console.log(`Gêneros não explorados: ${generosNaoExplorados.length > 0 ? generosNaoExplorados.join(', ') : 'Nenhum'}`);
+    console.log(`Classificação: ${classificacao}`);
+    console.log('----------------------------------------');
+  });
+}
