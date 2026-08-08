@@ -106,3 +106,29 @@ function exibirPerfil(usuario) {
   console.log(`A sua idade é: ${usuario.idade}`);
   console.log(`Seus gêneros favoritos são: ${usuario.generosFavoritos.join(', ')}`);
 }
+//==================Criar catálogo de filmes e séries===================//
+
+const catalogoBase = [
+  { id: 1, titulo: 'John Wick', tipo: 'Filme', generos: ['Ação', 'Thriller'], duracaoMinutos: 101 },
+  { id: 2, titulo: 'O Contador', tipo: 'Filme', generos: ['Ação', 'Drama', 'Thriller'], duracaoMinutos: 128 },
+  { id: 3, titulo: 'Stranger Things', tipo: 'Série', generos: ['Ficção Científica', 'Terror', 'Drama'], duracaoMinutos: 50, temporadas: 4 },
+  { id: 4, titulo: 'La Casa de Papel', tipo: 'Série', generos: ['Ação', 'Crime', 'Suspense'], duracaoMinutos: 45, temporadas: 5 },
+  { id: 5, titulo: 'Interestelar', tipo: 'Filme', generos: ['Ficção Científica', 'Drama', 'Aventura'], duracaoMinutos: 169 },
+  { id: 6, titulo: 'The Witcher', tipo: 'Série', generos: ['Ação', 'Fantasia', 'Aventura'], duracaoMinutos: 60, temporadas: 3 },
+  { id: 7, titulo: 'Matrix', tipo: 'Filme', generos: ['Ação', 'Ficção Científica'], duracaoMinutos: 136 },
+  { id: 8, titulo: 'Breaking Bad', tipo: 'Série', generos: ['Drama', 'Crime', 'Suspense'], duracaoMinutos: 47, temporadas: 5 }
+];
+
+function exibirCatalogo(catalogo) {
+  console.clear();
+  console.log('\n===== CATÁLOGO COMPLETO =====\n');
+
+  catalogo.forEach((item, index) => {
+    console.log(`${index + 1}. ${item.titulo} (${item.tipo}) — ${item.duracaoMinutos} min`);
+    console.log(`   Gêneros: ${item.generos.join(', ')}`);
+    if (item.temporadas) {
+      console.log(`   Temporadas: ${item.temporadas}`);
+    }
+    console.log('');
+  });
+}
