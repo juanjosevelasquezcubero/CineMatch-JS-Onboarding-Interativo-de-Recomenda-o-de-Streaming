@@ -132,3 +132,11 @@ function exibirCatalogo(catalogo) {
     console.log('');
   });
 }
+// função para remover acentos e normalizar o texto para comparação//
+
+function removerAcentos(texto) {
+  return texto
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
