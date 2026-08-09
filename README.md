@@ -18,3 +18,49 @@ O CineMatch JS demonstra de forma prática a **arquitetura cliente-servidor**:
 - O `async/await` permite esperar a resposta do “servidor” de forma limpa, sem travar o restante do código.
 
 Essa é a mesma lógica usada por aplicativos reais de streaming (Netflix, Spotify, etc.) quando buscam o catálogo de conteúdos.
+
+
+O **CineMatch JS** é um simulador interativo de recomendação de streaming.
+
+O sistema conversa com a pessoa usuária pelo terminal, coleta seu perfil
+(nome, idade e gêneros favoritos(ATENÇÂO!! sitema pede para pre-encher todos os campos para SAIR dele coloque fim após cadastro)  ) tamben  compara com um catálogo de filmes e séries além o usuario NÂO pode pular idade ou deixar campo sim cadastro o sistema rejeita até pre-encher 
+
+O projeto mostra:
+
+- percentual de compatibilidade com cada conteúdo;
+- gêneros em comum;
+- gêneros ainda não explorados;
+- conteúdo mais compatível;
+- recomendação personalizada;
+- menu interativo para navegar entre as funcionalidades.
+## Como executar
+
+Este projeto precisa de **Node.js**.
+
+1. Clone o repositório
+2. Rode `npm install` para instalar o `prompt-sync`
+3. Rode `node cinematch.js`
+4. Responda as perguntas exibidas no terminal
+5. Use o menu para navegar entre perfil, catálogo, compatibilidade, recomendação e sair
+
+---
+
+## Estrutura do projeto
+
+```txt
+cinematch-js/
+│
+├── cinematch.js
+├── package.json
+└── README.md
+
+
+## Tecnologias utilizadas
+
+JavaScript (Node.js)
+prompt-sync
+
+
+Autor
+Juan José Velasquez Cubero
+Turma: Mobile React Native T1 – SCTech

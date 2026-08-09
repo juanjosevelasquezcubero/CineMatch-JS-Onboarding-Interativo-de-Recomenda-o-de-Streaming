@@ -1,40 +1,24 @@
 {
-  "name": "prompt-sync",
-  "version": "4.2.0",
-  "description": "a synchronous prompt for node.js",
-  "main": "index.js",
+  "name": "cinematch-js-onboarding-interativo-de-recomenda-o-de-streaming",
+  "version": "1.0.0",
+  "description": "A internet funciona através de um modelo de ***requisição e resposta***:",
+  "main": "cinematch.js",
   "scripts": {
-    "test": "node test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heapwolf/prompt-sync.git"
+    "url": "git+https://github.com/juanjosevelasquezcubero/CineMatch-JS-Onboarding-Interativo-de-Recomenda-o-de-Streaming.git"
   },
-  "keywords": [
-    "prompt",
-    "sync",
-    "blocking",
-    "readline",
-    "input",
-    "getline",
-    "repl",
-    "history"
-  ],
-  "contributors": [
-    {
-      "name": "Paolo Fragomeni",
-      "email": "paolo@async.ly"
-    },
-    {
-      "name": "David Mark Clements",
-      "email": "david.clements@nearform.com"
-    }
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "prompt-sync-history": "^1.0.1"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/juanjosevelasquezcubero/CineMatch-JS-Onboarding-Interativo-de-Recomenda-o-de-Streaming/issues"
   },
+  "homepage": "https://github.com/juanjosevelasquezcubero/CineMatch-JS-Onboarding-Interativo-de-Recomenda-o-de-Streaming#readme",
   "dependencies": {
-    "strip-ansi": "^5.0.0"
+    "prompt-sync": "^4.2.0"
   }
 }

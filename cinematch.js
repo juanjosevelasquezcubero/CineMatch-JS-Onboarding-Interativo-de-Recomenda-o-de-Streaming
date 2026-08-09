@@ -1,3 +1,12 @@
+/**
+ * ============================================================
+ *  CineMatch JS - Mini-Projeto (prototipo motor de recomendação de streaming)
+ *  Autor: Juan José Velasquez Cubero
+ * ============================================================
+ */
+
+
+
 const prompt = require('prompt-sync')({ sigint: true });
 
 // ============================================================
