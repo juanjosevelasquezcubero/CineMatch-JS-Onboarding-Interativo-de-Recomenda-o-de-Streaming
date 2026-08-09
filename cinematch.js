@@ -235,3 +235,14 @@ function gerarRecomendacaoPersonalizada(usuario, catalogo) {
     console.log(`Esse conteúdo combina 100% com o seu gosto.`);
   }
 }
+//=========================================================================//
+//====================Funcao Sair do programa(callback)=====================//
+//=========================================================================//
+function finalizarOnboarding(nomeUsuario, callback) {
+  console.log('\nOnboarding finalizado com sucesso.');
+  callback(nomeUsuario);
+}
+
+function exibirMensagemFinal(nome) {
+  console.log(`${nome}, aproveite sua maratona! Bom streaming na PlayNow.`);
+}
