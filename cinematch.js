@@ -140,7 +140,9 @@ function removerAcentos(texto) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 }
+//====================================================================//
 //Compatabilidade entre o perfil do usuário e os itens do catálogo//
+//====================================================================//
 function calcularCompatibilidadeItem(usuario, conteudo) {
   const generosUsuario = usuario.generosFavoritos.map(g => removerAcentos(g.trim()));
   const generosConteudo = conteudo.generos.map(g => removerAcentos(g.trim()));
@@ -194,4 +196,42 @@ function calcularCompatibilidades(usuario, catalogo) {
     console.log(`Classificação: ${classificacao}`);
     console.log('----------------------------------------');
   });
+}
+//====================================================================//
+//======================= RECOMENDAÇÃO ===============================//
+//====================================================================//
+function encontrarMaiorCompatibilidade(usuario, catalogo) {
+  if (catalogo.length === 0) return null;
+
+  const resultados = catalogo.map(c => calcularCompatibilidadeItem(usuario, c));
+
+  return resultados.reduce((maior, atual) => {
+    return atual.percentual > maior.percentual ? atual : maior;
+  });
+}
+
+function gerarRecomendacaoPersonalizada(usuario, catalogo) {
+  console.clear();
+  console.log('\n===== RECOMENDAÇÃO PRINCIPAL =====\n');
+
+  const melhor = encontrarMaiorCompatibilidade(usuario, catalogo);
+
+  if (!melhor) {
+    console.log('Nenhum conteúdo disponível.');
+    return;
+  }
+
+  console.log(`Recomendação principal:`);
+  console.log(`${melhor.conteudo.titulo} (${melhor.conteudo.tipo})`);
+  console.log(`Compatibilidade: ${melhor.percentual}%`);
+  console.log(`Classificação: ${melhor.classificacao}`);
+
+  console.log(`\nRecomendação para ${usuario.nome}:`);
+
+  if (melhor.generosNaoExplorados.length > 0) {
+    console.log(`Você já curte ${usuario.generosFavoritos.join(', ')} — que tal experimentar ${melhor.generosNaoExplorados[0]}?`);
+    console.log(`"${melhor.conteudo.titulo}" pode ser uma ótima escolha.`);
+  } else {
+    console.log(`Esse conteúdo combina 100% com o seu gosto.`);
+  }
 }
