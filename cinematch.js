@@ -246,3 +246,66 @@ function finalizarOnboarding(nomeUsuario, callback) {
 function exibirMensagemFinal(nome) {
   console.log(`${nome}, aproveite sua maratona! Bom streaming na PlayNow.`);
 }
+//========================Classes=========================//
+//=========================================================//
+class Conteudo {
+  constructor(id, titulo, tipo, generos, duracaoMinutos) {
+    this.id = id;
+    this.titulo = titulo;
+    this.tipo = tipo;
+    this.generos = generos;
+    this.duracaoMinutos = duracaoMinutos;
+  }
+
+  exibirResumo() {
+    return `${this.titulo} (${this.tipo}) — ${this.duracaoMinutos} min`;
+  }
+}
+
+class Serie extends Conteudo {
+  constructor(id, titulo, generos, duracaoMinutos, temporadas) {
+    super(id, titulo, 'Série', generos, duracaoMinutos);
+    this.temporadas = temporadas;
+  }
+
+  exibirTemporadas() {
+    return `${this.titulo} tem ${this.temporadas} temporada(s)`;
+  }
+}
+//==================================================================//
+//=================== Clousure======================================//
+function criarContadorDeRecomendacoes() {
+  let total = 0;
+  return function () {
+    total++;
+    return total;
+  };
+}
+
+const contadorRecomendacoes = criarContadorDeRecomendacoes();
+//==================================================================//
+//=================== Promise ======================================//
+function buscarCatalogoSimulado() {
+  return new Promise((resolve) => {
+    console.log('\nBuscando catálogo no servidor da PlayNow...');
+    setTimeout(() => {
+      resolve(catalogoBase);
+    }, 1200);
+  });
+}
+//==================================================================//
+//===================liga o programa(async /  await)==================//
+//==================================================================//
+async function iniciarSistema() {
+  const usuario = criarPerfil();
+  console.log(`\nOlá, ${usuario.nome}! Perfil criado com sucesso.`);
+
+  const catalogo = await buscarCatalogoSimulado();
+  console.log('Catálogo carregado com sucesso!');
+
+  exibirMenu(usuario, catalogo);
+}
+
+iniciarSistema().catch(erro => {
+  console.error('Erro:', erro.message);
+});
